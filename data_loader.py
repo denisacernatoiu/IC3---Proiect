@@ -104,24 +104,11 @@ def create_data_loaders(train_data, val_data, test_data):
     train_dataset = NO2Dataset(train_data)
     val_dataset = NO2Dataset(val_data)
     test_dataset = NO2Dataset(test_data)
+    generator = torch.Generator().manual_seed(42)
 
-    train_loader = DataLoader(
-        train_dataset,
-        batch_size=BATCH_SIZE,
-        shuffle=True
-    )
-
-    val_loader = DataLoader(
-        val_dataset,
-        batch_size=BATCH_SIZE,
-        shuffle=False
-    )
-
-    test_loader = DataLoader(
-        test_dataset,
-        batch_size=BATCH_SIZE,
-        shuffle=False
-    )
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, generator=generator)
+    val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
     return train_loader, val_loader, test_loader
 
