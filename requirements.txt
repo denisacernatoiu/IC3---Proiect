@@ -191,3 +191,4 @@ xarray==2026.9.0
 xee==0.1.2
 xyzservices==2026.9.1
 zict==3.0.0
+scikit-learn==2.3.0
